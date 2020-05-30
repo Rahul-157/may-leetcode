@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int hash[123]={0};
+    int firstUniqChar(string s) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(NULL);
+        if(s=="")return -1;
+        
+        for(auto x:s)
+            hash[x]++;
+        for (int i=0;i<s.length();i++)
+            if(hash[s[i]]==1)
+                return i;
+            
+        return -1;
+        
+       
+    }
+     
+};
