@@ -1,0 +1,55 @@
+Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false.
+
+Each letter in the magazine string can only be used once in your ransom note.
+
+ 
+
+Example 1:
+
+Input: ransomNote = "a", magazine = "b"
+Output: false
+Example 2:
+
+Input: ransomNote = "aa", magazine = "ab"
+Output: false
+Example 3:
+
+Input: ransomNote = "aa", magazine = "aab"
+Output: true
+ 
+
+Constraints:
+
+You may assume that both strings contain only lowercase letters.
+
+
+
+
+
+static auto _______ = [](){
+    // turn off sync
+    std::ios::sync_with_stdio(false);
+    // untie in/out streams
+    std::cin.tie(nullptr);
+    return 0;
+}();
+
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+     vector<int> hash(123);
+        for (auto i :ransomNote)
+            hash[i]++;
+  
+       
+        for (auto i: magazine)
+            hash[i]--;
+       
+         for(auto i:hash){
+            
+             if(i>0)
+                 return false;
+         }
+        return true;
+    }
+};
