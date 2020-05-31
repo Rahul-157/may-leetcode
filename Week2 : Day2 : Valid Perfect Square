@@ -1,0 +1,50 @@
+Given a positive integer num, write a function which returns True if num is a perfect square else False.
+
+Follow up: Do not use any built-in library function such as sqrt.
+
+ 
+
+Example 1:
+
+Input: num = 16
+Output: true
+Example 2:
+
+Input: num = 14
+Output: false
+ 
+
+Constraints:
+
+1 <= num <= 2^31 - 1
+
+
+class Solution {
+public:
+    int d_sum(int n){
+        if(n<10)
+            return n;
+        return n%9==0?9:n%9;      
+    }
+    bool isPerfectSquare(int num) {
+        if(num==1)return true;
+       int d= num%10;
+        if(d==2||d==3||d==7||d==8)
+            return false;
+        int sum=d_sum(num);
+        if(sum!=1&&sum!=4&&sum!=7&&sum!=9)
+            return false;
+        sum=1;
+        for(int i =3;i<=2*46341;i=i+2)
+            {
+            sum+=i;
+            if(sum==num)
+                return true;
+           
+            if(sum>num)
+                return false;
+        }
+        cout<<sum;
+        return false;
+    }
+};
